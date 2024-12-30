@@ -1,29 +1,36 @@
-const Fastify = require('fastify');
-const fastifySocketIO = require('fastify-socketio');
+const fastify = require('fastify')({ logger: true });
+const fastifyIO = require('fastify-socket.io');
 
-const app = Fastify();
+fastify.register(fastifyIO);
 
-app.register(fastifySocketIO, {
-  cors: {
-    origin: '*',
-    methods: ['GET', 'POST']
-  }
+
+fastify.get('/', async (request, reply) => {
+  reply.send({ message: 'Socket.IO server is running!' });
 });
 
-app.ready().then(() => {
-  app.io.on('connection', (socket) => {
-    socket.on('message', (msg) => {
-      socket.emit('message', msg);
+const start = async () => {
+  try {
+    await fastify.listen({ port: 3000 });
+    fastify.log.info(`Server is running at http://localhost:3000`);
+
+
+    fastify.io.on('connection', (socket) => {
+      fastify.log.info(`Client connected: ${socket.id}`);
+
+
+      socket.on('message', (msg) => {
+        fastify.log.info(`Received message: ${msg}`);
+        socket.emit('message', `Echo: ${msg}`);
+      });
+
+      socket.on('disconnect', () => {
+        fastify.log.info(`Client disconnected: ${socket.id}`);
+      });
     });
-
-    socket.on('disconnect', () => {});
-  });
-});
-
-app.listen(3000, (err, address) => {
-  if (err) {
-    console.error(err);
+  } catch (err) {
+    fastify.log.error(err);
     process.exit(1);
   }
-  console.log(`Server listening at ${address}`);
-});
+};
+
+start();
