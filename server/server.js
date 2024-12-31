@@ -3,14 +3,14 @@ const LogHelper = require("./helper/logger");
 const routesSetup = require("./routes");
 const socketSetup = require("./socket");
 const path = require("path");
+const ServerConfiguration = require("./configs/server.js")
 
 const Logger = new LogHelper("server");
 
 const SERVER_EVENTS = {
   prepare: async function() {
     Logger.info("Initializing models and external services...");
-    await modelInit();
-    smtdfcServices.onServerStart();
+
   },
   start: function(fastify) {
     Logger.success("Server started successfully.");
@@ -57,7 +57,7 @@ module.exports = async function initServer() {
       parseOptions: {},
     });
 
-    fastify.register(require('fastify-socket.io'), {
+    app.register(require('fastify-socket.io'), {
       cors: {
         origin: "*",
         methods: ["GET", "POST"],

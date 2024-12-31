@@ -1,4 +1,4 @@
-const LogHelper = require("./helper/logger");
+const LogHelper = require("../helper/logger");
 
 const Logger = new LogHelper("socket");
 const handlers = []
