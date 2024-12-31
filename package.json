@@ -6,9 +6,7 @@
   "scripts": {
     "start": "node ./server/index.js"
   },
-  "keywords": [
-
-  ],
+  "keywords": [],
   "author": "smtdfc",
   "license": "MIT",
   "dependencies": {
@@ -29,7 +27,10 @@
     "@fastify/cookie": "^9.1.0",
     "@fastify/view": "^8.2.0",
     "axios": "^1.6.0",
-    "fastify-socketio": "^4.5.0"
+    "fastify-socket.io": "^4.0.0",
+    "socket.io": "^4.8.1"
   },
-  "engines": { "node": "14.x" }
+  "engines": {
+    "node": "14.x"
+  }
 }
