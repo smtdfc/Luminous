@@ -35,6 +35,7 @@ CoreIO.addFunction("input", new FunctionDeclartion({
 // Hàm writeFile (ghi dữ liệu vào file)
 CoreIO.addFunction("writeFile", new FunctionDeclartion({
   name: "writeFile",
+  nodeType:"function",
   args: [
     {
       type: "STRING",

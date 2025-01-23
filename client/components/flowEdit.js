@@ -62,7 +62,7 @@ export const FlowEdit = Turtle.createComponent({
     this.flows[flowID].addNode(nodeID, node)
     root.appendChild(this.html`
       <span class="node">
-          <span class="node-header" style="position:sticky">${nodeDeclaration.displayName ?? nodeDeclaration.name}</span>
+          <span class="node-header" style="position:sticky"><i class="material-symbols-outlined">${nodeDeclaration.nodeType=="function"? "function" : "flowchart"}</i>${nodeDeclaration.displayName ?? nodeDeclaration.name}</span>
           <span class="node-body">${this.addArgNode(nodeDeclaration.args,flowID,nodeID)}</span>
       </span>
       <svg width="100" height="51">
@@ -94,7 +94,6 @@ export const FlowEdit = Turtle.createComponent({
         <${NodePicker(this.nodePickerRef)} t-ref="node"/>
       `
     );
-    console.log(this.flows)
   },
 
   onFlowClick({ target }) {
@@ -104,7 +103,7 @@ export const FlowEdit = Turtle.createComponent({
       let flowID = target.dataset.flow
       let node = this.flows[flowID].nodes[nodeID]
       let currentValue = target.innerHTML;
-      target.innerHTML = "<input/>";
+      target.innerHTML = `<input class="form-input p-3" style="padding:0.5rem" />`;
       let inputElement = target.querySelector("input");
       inputElement.value = currentValue;
       inputElement.addEventListener("blur", () => {
@@ -124,55 +123,66 @@ export const FlowEdit = Turtle.createComponent({
   },
 
   template() {
-    return this.html`
-      <style>
-        .flows {
-          display:flex;
-          flex-direction:column;
-          align-items:center;
-          padding: 0.8rem;
-        }
-    
-        .node {
-          padding: 0.5rem;
-          border: solid 1.5px rgba(0, 0, 0, 0.09);
-          border-radius: 5px;
-          min-width: 300px;
-          display: flex;
-          flex-flow: column;
-          box-sizing: border-box;
-          margin-top: .5rem;
-        }
-    
-        .node-header {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          padding: 0.3rem;
-          border-bottom: solid 1.5px rgba(0, 0, 0, 0.09);
-        }
-    
-        .node-body {
-          padding: .6rem;
-        }
-    
-        .node-arg {
-          margin-top:3px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-        }
-    
-        .node-arg.flows {
-          flex-flow: column;
-          padding: 0;
-        }
-      </style>
-      <div t-events="click:onFlowClick" class="flows" t-ref="flow" id="${this.id("root")}" >Root</div>
-      <div class="d-flex align-items-center justify-content-center">
-        <button data-root="${this.id("root")}" class="btn-icon material-symbols-outlined" t-events="click:onAddBtnClick">add</button>
-      </div>
-      <div t-ref="panels"></div>
-    `;
-  },
+  return this.html`
+    <style>
+      .flows {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0.8rem;
+      }
+
+      .node {
+        padding: 0.5rem;
+        border: solid 1.5px rgba(0, 0, 0, 0.09);
+        border-radius: 5px;
+        min-width: 300px;
+        display: flex;
+        flex-flow: column;
+        box-sizing: border-box;
+        margin-top: 0.5rem;
+      }
+
+      .node-title{
+        display:flex;
+        align-items:center;
+      }
+      
+      .node-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 0.3rem;
+        border-bottom: solid 1.5px rgba(0, 0, 0, 0.09);
+        position: -webkit-sticky; 
+        position: sticky;
+        top: 0; 
+        background-color: white; 
+        z-index: 10; 
+        width: 100%;
+      }
+
+      .node-body {
+        padding: 0.6rem;
+      }
+
+      .node-arg {
+        margin-top: 3px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .node-arg.flows {
+        flex-flow: column;
+        padding: 0;
+      }
+    </style>
+    <div t-events="click:onFlowClick" class="flows" t-ref="flow" id="${this.id("root")}">Root</div>
+    <div class="d-flex align-items-center justify-content-center">
+      <button data-root="${this.id("root")}" class="btn-icon material-symbols-outlined" t-events="click:onAddBtnClick">add</button>
+    </div>
+    <div t-ref="panels"></div>
+  `;
+}
 });
