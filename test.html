@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>02010101</title>
+</head>
+
+<body>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+
+    }
+
+    .flows {
+      padding: 0.8rem;
+    }
+
+    .node {
+      padding: 0.5rem;
+      border: solid 1.5px rgba(0, 0, 0, 0.09);
+      border-radius: 5px;
+      width: 100%;
+      display: flex;
+      flex-flow: column;
+      box-sizing: border-box;
+      margin-top: .5rem;
+    }
+
+    .node-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0.3rem;
+      border-bottom: solid 1.5px rgba(0, 0, 0, 0.09);
+    }
+
+    .node-body {
+      padding: .6rem;
+    }
+
+    .node-arg {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .node-arg.flows {
+      flex-flow: column;
+      padding: 0;
+    }
+  </style>
+  <div class="flows">
+    <span class="node">
+      <span class="node-header">
+        Print
+      </span>
+      <span class="node-body">
+        <span class="node-arg">
+          <span>Abc</span>
+          <span>10</span>
+        </span>
+        <span class="node-arg">
+          <span>Abc</span>
+          <span>10</span>
+        </span>
+        <span class="node-arg">
+          <span>Abc</span>
+          <span>10</span>
+        </span>
+        <span class="node-arg">
+          <span>Abc</span>
+          <span>10</span>
+        </span>
+      </span>
+    </span>
+    <span class="node">
+      <span class="node-header">
+        Print
+      </span>
+      <span class="node-body">
+        <span class="node-arg flows">
+            <span class="node">
+            <span class="node-header">
+              Print
+            </span>
+            <span class="node-body">
+              <span class="node-arg">
+                <span>Abc</span>
+                <span>10</span>
+              </span>
+              <span class="node-arg">
+                <span>Abc</span>
+                <span>10</span>
+              </span>
+              <span class="node-arg">
+                <span>Abc</span>
+                <span>10</span>
+              </span>
+              <span class="node-arg">
+                <span>Abc</span>
+                <span>10</span>
+              </span>
+            </span>
+          </span> <span class="node">
+            <span class="node-header">
+              Check conditions 
+            </span>
+            <span class="node-body">
+              <span class="node-arg">
+                <span>Condition</span>
+                <span>a>10</span>
+              </span>
+              <span class="node-arg">
+                <span>Abc</span>
+                <span>10</span>
+              </span>
+              <span class="node-arg">
+                <span>Abc</span>
+                <span>10</span>
+              </span>
+              <span class="node-arg">
+                <span>Abc</span>
+                <span>10</span>
+              </span>
+            </span>
+          </span>
+        </span>
+        <span class="node-arg">
+          <span>Abc</span>
+          <span>10</span>
+        </span>
+        <span class="node-arg">
+          <span>Abc</span>
+          <span>10</span>
+        </span>
+        <span class="node-arg">
+          <span>Abc</span>
+          <span>10</span>
+        </span>
+      </span>
+    </span>
+  </div>
+</body>
+
+</html>
