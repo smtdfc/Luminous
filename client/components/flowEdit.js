@@ -107,10 +107,10 @@ export const FlowEdit = Turtle.createComponent({
       let inputElement = target.querySelector("input");
       inputElement.value = currentValue;
       inputElement.addEventListener("blur", () => {
-        setTimeout(()=>{
+        setTimeout(() => {
           target.textContent = inputElement.value;
           node.setArg(argName, inputElement.value);
-        },100)
+        }, 100)
       });
 
       inputElement.addEventListener("keydown", (e) => {
@@ -123,7 +123,7 @@ export const FlowEdit = Turtle.createComponent({
   },
 
   template() {
-  return this.html`
+    return this.html`
     <style>
       .flows {
         display: flex;
@@ -184,5 +184,5 @@ export const FlowEdit = Turtle.createComponent({
     </div>
     <div t-ref="panels"></div>
   `;
-}
+  }
 });

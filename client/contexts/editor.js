@@ -19,7 +19,6 @@ CoreIO.addFunction("print", new FunctionDeclartion({
   ]
 }));
 
-// Hàm input (đọc dữ liệu từ người dùng)
 CoreIO.addFunction("input", new FunctionDeclartion({
   name: "input",
   args: [

@@ -1,6 +1,6 @@
 import {FlowEdit} from './components/flowEdit.js';
 import { initRouter } from './router/index.js';
-
+import {init as initService } from './services/index.js';
 const app = Turtle.createApp(document.getElementById("root"))
 
 
@@ -11,7 +11,9 @@ function main(){
       <div class="line-loader"/>
     </div>
     <div class="" id="contents" />
+    <div class="" id="modals"/>
   `
+  initService(app)
   initRouter(app)
 }
 
