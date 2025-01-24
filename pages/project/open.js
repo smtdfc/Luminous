@@ -1,26 +1,31 @@
+import { ProjectManagerAPI } from "../../apis/project.js";
 
 export const Page = Turtle.createComponent({
   onInit() {
-    this.createProjModalRef={}
+    
   },
 
-  
+  onRender() {
+    ProjectManagerAPI.all()
+      .then((list)=>{
+        console.log(list)
+      })
+  },
+
   template() {
     return this.html`
       <div class="root fade-in container" style="padding-top:8rem; min-height:100vh;" ref="container">
         <div class="d-flex align-items-center px-3">
           <a href="#!/" class="material-symbols-outlined btn-icon">arrow_back</a>
           <div class="ml-3 d-flex flex-col">
-            <h3 class="m-0">Create new project</h3>
+            <h2 class="m-0">Open project</h2>
           </div>
         </div>
         
         <div class="mt-5 mx-4">
-          <div class="form-group">
-            <label class="form-label">Project name:</label>
-            <input t-model="nameInput" type="text" class="form-input" />
-          </div>
-          <button  class="btn btn-primary">Create</button>
+          <ul class="list list-hover" t-ref="list">
+            <li></li>
+          </ul>
         </div>
       </div>
 

@@ -19,6 +19,11 @@ export function initRouter(app) {
         return (await import("../pages/project/create.js")).Page;
       }
     },
+    "/project/open": {
+      loader: async () => {
+        return (await import("../pages/project/open.js")).Page;
+      }
+    },
   }
 
   router.on("onpagechange", function() {

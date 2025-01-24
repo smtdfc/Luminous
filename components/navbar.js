@@ -26,7 +26,7 @@ export const Navbar = Turtle.createComponent({
           <span data-taction="state:toggle:dropdownOpen">Files</span>
           <ul class="dropdown-menu" >
             <li><a href="#!/project/create">New Project</a></li>
-            <li><a href="#">Open Project</a></li>
+            <li><a href="#!/project/open">Open Project</a></li>
             <li><a href="#">Save</a></li>
           </ul>
         </li>
