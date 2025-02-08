@@ -1,0 +1,4 @@
+{
+  "entryPoint":"client/index.jsx",
+  "outputDir":"public/dist"
+}

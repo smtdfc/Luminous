@@ -1,0 +1,18 @@
+{
+  "name": "luminous",
+  "version": "1.0.0",
+  "description": "Automation tool",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "smtdfc",
+  "license": "MIT",
+  "dependencies": {
+    "rumious": "^0.0.4",
+    "rumious-babel-preset": "^0.0.4"
+  },
+  "devDependencies": {
+    "rumious-builder": "^0.0.4"
+  }
+}
