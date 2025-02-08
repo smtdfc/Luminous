@@ -1,4 +1,5 @@
 {
-  "entryPoint":"client/index.jsx",
-  "outputDir":"public/dist"
+  "allowImportMediaFiles": true,
+  "allowRumiousFiles": true,
+  "outputDir": "public/dist"
 }

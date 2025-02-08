@@ -1,8 +1,10 @@
-
 import babel from '@rollup/plugin-babel';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import terser from "@rollup/plugin-terser";
+import postcss from 'rollup-plugin-postcss';
+import autoprefixer from 'autoprefixer';
+import rumious from './node_modules/rumious-builder/plugins/rollup.js';
 import path from 'path';
 import os from "os";
 
@@ -15,9 +17,12 @@ export default {
     format: 'es',
     chunkFileNames: 'r_[hash].js',
     entryFileNames: 'bundle.min.js',
-    preserveModules: true,
-    sourcemap: true,
   },
+  watch: {
+    include: 'client/**',  
+    exclude: 'node_modules/**',
+  },
+  cache:true,
   plugins: [
     resolve(),
     commonjs(),
@@ -27,11 +32,18 @@ export default {
         './node_modules/rumious-babel-preset/index.js',
       ],
     }),
+    postcss({
+      plugins: [autoprefixer()],
+      extract: 'styles/bundle.min.css',
+      minimize: true,
+    }),
     terser({
-      
+
       maxWorkers: {
         value: os.cpus().length || 1,
       }
-    })
+    }),
+
+    rumious()
   ],
 };

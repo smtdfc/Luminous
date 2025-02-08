@@ -13,6 +13,9 @@
     "rumious-babel-preset": "^0.0.4"
   },
   "devDependencies": {
-    "rumious-builder": "^0.0.4"
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.1",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rumious-builder": "^0.0.6"
   }
 }
